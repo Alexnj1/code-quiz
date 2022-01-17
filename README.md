@@ -1,6 +1,6 @@
 # code-quiz
 
-## A times code quiz for practice
+## A timed code quiz for practice
 
 ### Built with JavaScript
 
