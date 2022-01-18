@@ -1,5 +1,7 @@
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    list-style: none;
 }
 
 body {
@@ -26,7 +28,7 @@ header h2 {
     color: white;
     padding: 5px;
     border-radius: 20px;
-    background-color: red;
+    background-color: rgb(206, 18, 18);
     border: solid black 2px;
 }
 
@@ -68,5 +70,36 @@ header .high-scores:hover {
 }
 
 .intro button:hover {
+    box-shadow: 0 0 2px 2px black;
+}
+
+.question-container {
+    text-align: center;
+    line-height: 30px;
+    margin: 10% 30%;
+}
+
+.question-container h3{
+    margin-right: 5%;
+}
+
+.question-container ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.question-container ul button {
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: rgb(206, 18, 18);
+    border: solid black 2px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.question-container ul button:hover {
     box-shadow: 0 0 2px 2px black;
 }
