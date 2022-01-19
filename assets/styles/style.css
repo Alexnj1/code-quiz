@@ -40,24 +40,19 @@ header .high-scores:hover {
     box-shadow: 0 0 2px 2px black;
 }
 
-.intro {
+.intro, .end-container  {
     text-align: center;
     margin-top: 10%;
 }
 
-.intro h3 {
-    font-size: 25px;
-    border-bottom: 3px solid red;
-    padding: 10px;
-    margin: 0 40%;
+.score-save-area{
+    text-align: center;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
 }
 
-.intro p {
-    line-height: 30px;
-    font-weight: bold;
-}
-
-.intro button {
+.submit-button {
     appearance: none;
     cursor: pointer;
     font-weight: bold;
@@ -66,10 +61,41 @@ header .high-scores:hover {
     padding: 7px;
     border: solid black 2px;
     border-radius: 15px;
-    background-color: red;
+    background-color: rgb(206, 18, 18);
+    margin: 0 46%;
 }
 
-.intro button:hover {
+.intro h3, .end-announcement, .prompt-title {
+    font-size: 25px;
+    border-bottom: 3px solid rgb(206, 18, 18);
+    padding: 10px;
+    margin: 0 40%;
+}
+
+.intro p, .end-message, .prompt-text {
+    line-height: 30px;
+    font-weight: bold;
+}
+
+.intro button, .save-button {
+    appearance: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    padding: 7px;
+    border: solid black 2px;
+    border-radius: 15px;
+    background-color: rgb(206, 18, 18);
+}
+
+
+#initials-area{
+    appearance: none;
+    margin: 15px 40%;
+}
+
+.intro button:hover, .save-button:hover, .submit-button:hover {
     box-shadow: 0 0 2px 2px black;
 }
 

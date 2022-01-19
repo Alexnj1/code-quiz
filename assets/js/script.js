@@ -27,9 +27,10 @@ let questions = [
 
 var questionNumber = 1
 var playerScore = 0
-var playerTime = 50
+var playerTime = 90
 var mainBody = document.querySelector('body')
 var startButton = document.querySelector('button')
+var highScore = document.querySelector('.high-scores')
 var i = 0
 
 function quizStart () {
@@ -47,12 +48,14 @@ function quizStart () {
                 questionContainer.style.display = 'none'
                 endQuiz()
             }
-        }, 50)
+        }, 1000)
     } 
     timer()
 
     // quizQuestions()
 }
+
+
 
 
 function quizQuestions () {
@@ -99,11 +102,29 @@ function quizQuestions () {
 function answerChoices (event) {
     //debugger
     var target = event.target;
-    //
+    // debugger
+    
     if (target.matches(".correct")) {
         console.dir(target);
-        playerScore ++
-        //
+        playerScore += 10
+        questionNumber ++
+        i++
+        changeQuestion()
+    }else if (target.matches(".incorrect1")) {
+        console.log('incorrect')
+        playerTime -=10
+        questionNumber ++
+        i++
+        changeQuestion()
+    }else if (target.matches(".incorrect2")) {
+        console.log('incorrect')
+        playerTime -=10
+        questionNumber ++
+        i++
+        changeQuestion()
+    }else if (target.matches(".incorrect3")) {
+        console.log('incorrect')
+        playerTime -=10
         questionNumber ++
         i++
         changeQuestion()
@@ -111,9 +132,10 @@ function answerChoices (event) {
         
 }
 
-function changeQuestion() {
+function changeQuestion() { 
+    //debugger
     console.log('hi');
-    
+    if (i<questions.length) {
     var nextQuestion = document.querySelector('.question')
     nextQuestion.textContent = questions[i].q
 
@@ -125,10 +147,88 @@ function changeQuestion() {
     nextAnswer3.textContent = questions[i].c3
     var nextAnswer4 = document.querySelector('.incorrect3')
     nextAnswer4.textContent = questions[i].c4
+    }else {
+        endQuiz()
+    }
+    
+
 }
 // try to create a new function to handle a click event on the list elements. maybe use query selector along the way somehow?
 
 function endQuiz() {
+    var questionContainer = document.querySelector('.question-container')
+    questionContainer.style.display = 'none'
+    var timer = document.querySelector('.timer')
+    timer.style.display = 'none'
+    var end = document.createElement('section')
+    end.className = ('end-container');
+    
+
+    var endAnnouncement = document.createElement('h3');
+    endAnnouncement.className = ('end-announcement');
+    endAnnouncement.textContent = ('The quiz is now over!')
+
+    var endMessage = document.createElement('p');
+    endMessage.className = ('end-message');
+    if (playerScore > 70) {
+        endMessage.innerHTML = ('You have a score of ' + playerScore + ', good job! <br> You can choose to save your score or view other high scores');   
+    }else if (playerScore < 70) {
+        endMessage.innerHTML = ('You have a score of ' + playerScore + ', good try! better luck next time! <br> You can choose to save your score or view other high scores')        
+    }
+
+    var saveButton = document.createElement("button")
+    saveButton.className = ('save-button');
+    saveButton.textContent = ('Save Score')
+
+    end.appendChild(endAnnouncement);
+    end.appendChild(endMessage);
+    end.appendChild(saveButton);
+
+    mainBody.appendChild(end)
+    
+    saveButton.addEventListener('click', saveScore);
+}
+
+function saveScore () {
+    var end = document.querySelector('.end-container')
+    end.style.display = 'none'
+
+    var scoreSaveArea = document.createElement('section')
+    scoreSaveArea.className = ('score-save-area')
+
+    var promptTitle = document.createElement('h3');
+    promptTitle.className = ('prompt-title')
+    promptTitle.textContent = ('Saving your score...')
+
+    var promptText = document.createElement('p');
+    promptText.className = ('prompt-text');
+    promptText.textContent = ('Please enter your initials and press the SAVE button')
+
+    var initialsArea = document.createElement('textarea');
+    initialsArea.id = ("initials-area");
+
+    var submitButton = document.createElement('button');
+    submitButton.className = ('submit-button');
+    submitButton.textContent = ('SAVE') 
+    
+
+    scoreSaveArea.appendChild(promptTitle);
+    scoreSaveArea.appendChild(promptText);
+    scoreSaveArea.appendChild(initialsArea);
+    scoreSaveArea.appendChild(submitButton);
+    mainBody.appendChild(scoreSaveArea);
+
+    submitButton.addEventListener('click', storeScore)
+}
+
+function storeScore() {
+    document.querySelector('.submit-button').innerHTML = 'Saved!'
+    var initialsValue = document.querySelector('#initials-area').value
+    console.dir (initialsValue)
+    localStorage.setItem(initialsValue, JSON.stringify(playerScore))
+}
+
+function fetchScore () {
     
 }
   
@@ -138,3 +238,4 @@ function endQuiz() {
 
 startButton.addEventListener('click', quizStart)
 startButton.addEventListener('click', quizQuestions)
+highScore.addEventListener('click', fetchScore)
