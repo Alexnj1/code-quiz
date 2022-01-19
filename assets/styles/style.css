@@ -15,10 +15,11 @@ header {
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 0 10% 0 7%;
+    border-bottom: 3px solid;
 }
 
 header h1 {
-    color: red;
+    color: rgb(206, 18, 18);
     font-size: 35px;
     text-align: center;
 }
@@ -128,4 +129,15 @@ header .high-scores:hover {
 
 .question-container ul button:hover {
     box-shadow: 0 0 2px 2px black;
+}
+
+.highscore-text {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    margin: 50px;
 }

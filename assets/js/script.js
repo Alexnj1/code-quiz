@@ -5,7 +5,6 @@ let questions = [
         c2 : 'Strings, Functions, Questions',
         c3 : 'Booleans, Numbers, Objects',
         c4 : 'Symbols, Numbers, Functions',
-        a : 'Booleans, Numbers, Objects'
     },
     {
         q : 'True or False, JavaScript is not case sensitive.',
@@ -13,7 +12,6 @@ let questions = [
         c2 : 'True but only inside functions',
         c3 : 'False',
         c4 : 'True but only when defining variables',
-        a : 'False'
     },
     {
         q : 'What are the two scopes in JavaScript?',
@@ -21,7 +19,55 @@ let questions = [
         c2 : 'Variable and Object',
         c3 : 'Local and Global',
         c4 : 'Function and Local',
-        a : 'local and Global'
+    },
+    {
+        q : 'How do you create an array in JavaScript?',
+        c1 : 'var x = {}',
+        c2 : 'var x = ()',
+        c3 : 'var x = []',
+        c4 : 'var x : []',
+    },
+    {
+        q : 'How do you create a named function?',
+        c1 : 'function () name {}',
+        c2 : 'var function {}',
+        c3 : 'function name() {}',
+        c4 : 'var function () {}'
+    },
+    {
+        q : 'How do you create an object?',
+        c1 : 'var name {]',
+        c2 : 'var name []',
+        c3 : 'var name {}',
+        c4 : 'var name ()'
+    },
+    {
+        q : "what is 'This' referring to?",
+        c1 : 'The variable it belongs to',
+        c2: 'The function it belongs to',
+        c3: 'The object it belongs to',
+        c4 : 'All of the above'
+    },
+    {
+        q : 'What is a callback?',
+        c1 : 'A function to be executed directly before another',
+        c2 : 'A function that gets an argument from another function',
+        c3 : 'A function that is to be executed only after another is done',
+        c4 : 'A function that is to be executed again as long as a certain criteria is reached'
+    },
+    {
+        q : 'Which is NOT a rule to JavaScript variable naming conventions?',
+        c1 : 'You must not use any reserved names',
+        c2 : 'Names must not start with a number',
+        c3 : 'Names must not begin with an underscore',
+        c4 : 'Names must be treated as case sensitive'
+    },
+    {
+        q : 'Which is NOT a way an HTML element can be accessed in JavaScript code?',
+        c1 : 'getElementById()',
+        c2 : 'getElementByClassName()',
+        c3 : 'getElementdByTagName{}',
+        c4 : 'quertSelector()'
     }
 ]
 
@@ -52,7 +98,6 @@ function quizStart () {
     } 
     timer()
 
-    // quizQuestions()
 }
 
 
@@ -100,9 +145,8 @@ function quizQuestions () {
 }
 
 function answerChoices (event) {
-    //debugger
+
     var target = event.target;
-    // debugger
     
     if (target.matches(".correct")) {
         console.dir(target);
@@ -133,7 +177,7 @@ function answerChoices (event) {
 }
 
 function changeQuestion() { 
-    //debugger
+
     console.log('hi');
     if (i<questions.length) {
     var nextQuestion = document.querySelector('.question')
@@ -153,7 +197,6 @@ function changeQuestion() {
     
 
 }
-// try to create a new function to handle a click event on the list elements. maybe use query selector along the way somehow?
 
 function endQuiz() {
     var questionContainer = document.querySelector('.question-container')
@@ -224,18 +267,15 @@ function saveScore () {
 function storeScore() {
     document.querySelector('.submit-button').innerHTML = 'Saved!'
     var initialsValue = document.querySelector('#initials-area').value
-    console.dir (initialsValue)
-    localStorage.setItem(initialsValue, JSON.stringify(playerScore))
+    var highScore = (initialsValue + ' - ' + playerScore + ' points')
+
+    localStorage.setItem("HSvalue", JSON.stringify(highScore))
 }
 
-function fetchScore () {
-    
-}
-  
+
     
 
 
 
 startButton.addEventListener('click', quizStart)
 startButton.addEventListener('click', quizQuestions)
-highScore.addEventListener('click', fetchScore)
