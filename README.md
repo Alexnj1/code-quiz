@@ -6,7 +6,7 @@
 
 ### Built with JavaScript
 
-### Link:
+### Link: https://alexnj1.github.io/code-quiz/
 
 ### Screenshots
 ![codequiz](https://user-images.githubusercontent.com/93218601/150072155-a8eacd07-1b15-4dd4-82ab-e41ce8db8697.png)
