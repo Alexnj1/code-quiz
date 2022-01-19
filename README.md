@@ -1,6 +1,6 @@
 # code-quiz
 
-## A timed code quiz for practice
+## A timed coding quiz for practice
 
 ### Test your knowledge of web development concepts with this practice quiz.
 
